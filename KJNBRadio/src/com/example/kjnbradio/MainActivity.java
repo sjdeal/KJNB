@@ -1,12 +1,18 @@
 package com.example.kjnbradio;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,5 +36,15 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toSchedule(View view){
+		Intent intent = new Intent(this, ScheduleActivity.class);
+		startActivity(intent);
+	}
+	
+	public void toLiveStream(View view){
+		Intent intent = new Intent(this, LiveStreamActivity.class);
+		startActivity(intent);
 	}
 }
