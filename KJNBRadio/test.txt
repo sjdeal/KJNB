@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 blablablablablablablablablabla
+=======
+Third time is the charm, I hope
+>>>>>>> branch 'testBranch' of https://github.com/sjdeal/KJNB.git
