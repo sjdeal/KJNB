@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -45,6 +46,8 @@ public class MainActivity extends ActionBarActivity implements
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
+		mNavigationDrawerFragment.selectItem(1);
+		
 	}
 
 	@Override
@@ -57,16 +60,29 @@ public class MainActivity extends ActionBarActivity implements
 						PlaceholderFragment.newInstance(position + 1)).commit();
 	}
 
+	/*
+	 * Method that indicates what each button on the navigation drawer does.
+	 */
 	public void onSectionAttached(int number) {
+		Intent intent;
 		switch (number) {
-		case 1:
-			mTitle = getString(R.string.title_section1);
+		case 1: //Empty case to prevent crashing... or something
 			break;
-		case 2:
-			mTitle = getString(R.string.title_section2);
+		case 2: //Home page
+			break; //Don't do anything when you are already on this page
+		case 3: //Radio stream
+			intent = new Intent(this, RadioStreamActivity.class);
+			startActivity(intent);
 			break;
-		case 3:
-			mTitle = getString(R.string.title_section3);
+		case 4: //Schedule
+			intent = new Intent(this, ScheduleActivity.class);
+			startActivity(intent);
+			break;
+		case 5: //Video stream
+			break;
+		case 6: //Be a DJ
+			break;
+		case 7: //About
 			break;
 		}
 	}
