@@ -1,5 +1,6 @@
 package com.example.kjnbradio;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -7,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.TrackInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,9 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity implements
+public class RadioStreamActivity extends ActionBarActivity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
@@ -33,20 +39,38 @@ public class MainActivity extends ActionBarActivity implements
 	 * {@link #restoreActionBar()}.
 	 */
 	private CharSequence mTitle;
+	
+	MediaPlayer media;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_radio_stream);
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
+		setTitle(R.string.title_section2);
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
-		mNavigationDrawerFragment.selectItem(1);
+		mNavigationDrawerFragment.selectItem(2);
+				
+		try{
+			media = new MediaPlayer();
+			//media.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			media.setDataSource("http://kjnb.csbsju.edu:8000/highquality");
+			media.setOnPreparedListener(new OnPreparedListener() {
+				public void onPrepared(MediaPlayer mp){
+					mp.start();
+				}
+			});
+			media.prepareAsync();
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
 		
 	}
 
@@ -60,31 +84,28 @@ public class MainActivity extends ActionBarActivity implements
 						PlaceholderFragment.newInstance(position + 1)).commit();
 	}
 
-	/*
-	 * Method that indicates what each button on the navigation drawer does.
-	 */
 	public void onSectionAttached(int number) {
 		Intent intent;
 		switch (number) {
-		case 1: //Empty case to prevent crashing... or something
+		case 1:
 			break;
-		case 2: //Home page
-			break; //Don't do anything when you are already on this page
-		case 3: //Radio stream
-			intent = new Intent(this, RadioStreamActivity.class);
+		case 2:
+			intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 			break;
-		case 4: //Schedule
+		case 3:
+			break;
+		case 4:
 			intent = new Intent(this, ScheduleActivity.class);
 			startActivity(intent);
 			break;
-		case 5: //Video stream
+		case 5:
 			intent = new Intent(this, VideoStreamActivity.class);
 			startActivity(intent);
 			break;
-		case 6: //Be a DJ
+		case 6:
 			break;
-		case 7: //About
+		case 7:
 			break;
 		}
 	}
@@ -102,7 +123,7 @@ public class MainActivity extends ActionBarActivity implements
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
+			getMenuInflater().inflate(R.menu.radio_stream, menu);
 			restoreActionBar();
 			return true;
 		}
@@ -119,6 +140,18 @@ public class MainActivity extends ActionBarActivity implements
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void stop(View view){
+		Button button = (Button) findViewById(R.id.radio_play_button);
+		if(media.isPlaying()){
+			media.pause();
+			button.setText(R.string.play_button);
+		}
+		else{
+			media.start();
+			button.setText(R.string.pause_button);
+		}
 	}
 
 	/**
@@ -148,16 +181,16 @@ public class MainActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_radio_stream,
+					container, false);
 			return rootView;
 		}
 
 		@Override
 		public void onAttach(Activity activity) {
 			super.onAttach(activity);
-			((MainActivity) activity).onSectionAttached(getArguments().getInt(
-					ARG_SECTION_NUMBER));
+			((RadioStreamActivity) activity).onSectionAttached(getArguments()
+					.getInt(ARG_SECTION_NUMBER));
 		}
 	}
 

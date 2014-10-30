@@ -17,5 +17,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_radio_stream">RadioStreamActivity</string>
     <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_video_stream">VideoStreamActivity</string>
 
 </resources>

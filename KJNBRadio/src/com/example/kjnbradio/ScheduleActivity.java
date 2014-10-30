@@ -75,6 +75,8 @@ public class ScheduleActivity extends ActionBarActivity implements
 		case 4: //Schedule
 			break;
 		case 5: //Video stream
+			intent = new Intent (this, VideoStreamActivity.class);
+			startActivity(intent);
 			break;
 		case 6: //Be a DJ
 			break;

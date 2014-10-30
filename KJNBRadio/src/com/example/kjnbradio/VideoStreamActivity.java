@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
-public class MainActivity extends ActionBarActivity implements
+public class VideoStreamActivity extends ActionBarActivity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
@@ -34,10 +37,12 @@ public class MainActivity extends ActionBarActivity implements
 	 */
 	private CharSequence mTitle;
 
+	MediaPlayer media;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_video_stream);
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
@@ -46,8 +51,11 @@ public class MainActivity extends ActionBarActivity implements
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
-		mNavigationDrawerFragment.selectItem(1);
 		
+		VideoView video = (VideoView) findViewById(R.id.videoView1);
+		video.setVideoPath("http://o1.stretchinternet.com:1935/ondemand/_definst_/mp4:siena/siena-141300-v.mp4/playlist.m3u8");
+		video.setMediaController(new MediaController(VideoStreamActivity.this));
+		video.start();
 	}
 
 	@Override
@@ -60,16 +68,15 @@ public class MainActivity extends ActionBarActivity implements
 						PlaceholderFragment.newInstance(position + 1)).commit();
 	}
 
-	/*
-	 * Method that indicates what each button on the navigation drawer does.
-	 */
 	public void onSectionAttached(int number) {
 		Intent intent;
 		switch (number) {
 		case 1: //Empty case to prevent crashing... or something
 			break;
 		case 2: //Home page
-			break; //Don't do anything when you are already on this page
+			intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+			break;
 		case 3: //Radio stream
 			intent = new Intent(this, RadioStreamActivity.class);
 			startActivity(intent);
@@ -79,8 +86,6 @@ public class MainActivity extends ActionBarActivity implements
 			startActivity(intent);
 			break;
 		case 5: //Video stream
-			intent = new Intent(this, VideoStreamActivity.class);
-			startActivity(intent);
 			break;
 		case 6: //Be a DJ
 			break;
@@ -102,7 +107,7 @@ public class MainActivity extends ActionBarActivity implements
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
+			getMenuInflater().inflate(R.menu.video_stream, menu);
 			restoreActionBar();
 			return true;
 		}
@@ -148,16 +153,16 @@ public class MainActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_video_stream,
+					container, false);
 			return rootView;
 		}
 
 		@Override
 		public void onAttach(Activity activity) {
 			super.onAttach(activity);
-			((MainActivity) activity).onSectionAttached(getArguments().getInt(
-					ARG_SECTION_NUMBER));
+			((VideoStreamActivity) activity).onSectionAttached(getArguments()
+					.getInt(ARG_SECTION_NUMBER));
 		}
 	}
 

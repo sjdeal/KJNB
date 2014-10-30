@@ -9,15 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kjnbradio.LiveStreamActivity" >
 
-    <Button
-        android:id="@+id/radio_play_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
-        android:onClick="stop"
-        android:text="@string/pause_button" />
-
     <fragment
         android:id="@+id/navigation_drawer"
         android:name="com.example.kjnbradio.NavigationDrawerFragment"
