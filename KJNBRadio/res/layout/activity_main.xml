@@ -37,6 +37,13 @@
          the container.
     -->
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollY="10dp"
+        android:src="@drawable/kjnblogo" />
+
     <fragment
         android:id="@+id/navigation_drawer"
         android:name="com.example.kjnbradio.NavigationDrawerFragment"
