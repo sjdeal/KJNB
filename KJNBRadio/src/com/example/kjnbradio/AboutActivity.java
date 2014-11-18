@@ -1,12 +1,17 @@
 package com.example.kjnbradio;
 
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,11 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
-public class ScheduleActivity extends ActionBarActivity implements
+public class AboutActivity extends ActionBarActivity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
@@ -33,20 +41,20 @@ public class ScheduleActivity extends ActionBarActivity implements
 	 * {@link #restoreActionBar()}.
 	 */
 	private CharSequence mTitle;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_schedule);
+		setContentView(R.layout.activity_about);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
-		mNavigationDrawerFragment.selectItem(3);
+		
 	}
 
 	@Override
@@ -67,20 +75,16 @@ public class ScheduleActivity extends ActionBarActivity implements
 		case 2: //Home page
 			intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
-			break;//Don't do anything when you are already on this page
+			break;
 		case 3: //Radio stream
 			intent = new Intent(this, RadioStreamActivity.class);
 			startActivity(intent);
 			break;
-		case 4: //Schedule
-			break;
-		case 5: //Video stream
-			intent = new Intent (this, VideoStreamActivity.class);
+		case 4: //Be a DJ
+			intent = new Intent(this, BeADJActivity.class);
 			startActivity(intent);
 			break;
-		case 6: //Be a DJ
-			break;
-		case 7: //About
+		case 5: //About
 			break;
 		}
 	}
@@ -95,10 +99,10 @@ public class ScheduleActivity extends ActionBarActivity implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen
+     		// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.schedule, menu);
+			getMenuInflater().inflate(R.menu.video_stream, menu);
 			restoreActionBar();
 			return true;
 		}
@@ -144,7 +148,7 @@ public class ScheduleActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_schedule,
+			View rootView = inflater.inflate(R.layout.fragment_video_stream,
 					container, false);
 			return rootView;
 		}
@@ -152,9 +156,8 @@ public class ScheduleActivity extends ActionBarActivity implements
 		@Override
 		public void onAttach(Activity activity) {
 			super.onAttach(activity);
-			((ScheduleActivity) activity).onSectionAttached(getArguments()
+			((AboutActivity) activity).onSectionAttached(getArguments()
 					.getInt(ARG_SECTION_NUMBER));
 		}
 	}
-
 }

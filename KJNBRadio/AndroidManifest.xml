@@ -32,6 +32,7 @@
         </activity>
         <activity
             android:name=".RadioStreamActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_radio_stream" >
         </activity>
         <activity
@@ -39,8 +40,12 @@
             android:label="@string/title_activity_schedule" >
         </activity>
         <activity
-            android:name=".VideoStreamActivity"
+            android:name=".AboutActivity"
             android:label="@string/title_activity_video_stream" >
+        </activity>
+        <activity
+            android:name=".BeADJActivity"
+            android:label="@string/title_activity_be_adj" >
         </activity>
     </application>
 

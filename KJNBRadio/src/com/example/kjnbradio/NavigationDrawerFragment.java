@@ -1,9 +1,8 @@
 package com.example.kjnbradio;
 
-import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.app.ActionBar;
+import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -113,9 +112,7 @@ public class NavigationDrawerFragment extends Fragment {
 						getString(R.string.title_section1),
 						getString(R.string.title_section2),
 						getString(R.string.title_section3),
-						getString(R.string.title_section4),
-						getString(R.string.title_section5),
-						getString(R.string.title_section6),}));
+						getString(R.string.title_section4), }));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
 	}
@@ -169,8 +166,8 @@ public class NavigationDrawerFragment extends Fragment {
 					return;
 				}
 
-				getActivity().supportInvalidateOptionsMenu(); // calls
-																// onPrepareOptionsMenu()
+				getActivity().invalidateOptionsMenu(); // calls
+														// onPrepareOptionsMenu()
 			}
 
 			@Override
@@ -191,8 +188,8 @@ public class NavigationDrawerFragment extends Fragment {
 							.apply();
 				}
 
-				getActivity().supportInvalidateOptionsMenu(); // calls
-																// onPrepareOptionsMenu()
+				getActivity().invalidateOptionsMenu(); // calls
+														// onPrepareOptionsMenu()
 			}
 		};
 
@@ -292,7 +289,7 @@ public class NavigationDrawerFragment extends Fragment {
 	}
 
 	private ActionBar getActionBar() {
-		return ((ActionBarActivity) getActivity()).getSupportActionBar();
+		return getActivity().getActionBar();
 	}
 
 	/**

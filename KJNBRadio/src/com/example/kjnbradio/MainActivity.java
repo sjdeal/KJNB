@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
+		mNavigationDrawerFragment =  (NavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
 
@@ -74,17 +74,13 @@ public class MainActivity extends ActionBarActivity implements
 			intent = new Intent(this, RadioStreamActivity.class);
 			startActivity(intent);
 			break;
-		case 4: //Schedule
-			intent = new Intent(this, ScheduleActivity.class);
+		case 4: //Be a DJ
+			intent = new Intent(this, BeADJActivity.class);
 			startActivity(intent);
 			break;
-		case 5: //Video stream
-			intent = new Intent(this, VideoStreamActivity.class);
+		case 5: //About
+			intent = new Intent(this, AboutActivity.class);
 			startActivity(intent);
-			break;
-		case 6: //Be a DJ
-			break;
-		case 7: //About
 			break;
 		}
 	}

@@ -27,20 +27,20 @@ public class GMailSender extends javax.mail.Authenticator {
 
     public GMailSender(String user, String password) {   
         this.user = user;   
-        this.password = password;   
+        this.password = password;
 
-        Properties props = new Properties();   
-        props.setProperty("mail.transport.protocol", "smtp");   
+        Properties props = new Properties();
+        props.setProperty("mail.transport.protocol", "smtps");   
         props.setProperty("mail.host", mailhost);   
         props.put("mail.smtp.auth", "true");   
-        props.put("mail.smtp.port", "465");   
+        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.enable", "true");
         props.put("mail.smtp.socketFactory.port", "465");   
         props.put("mail.smtp.socketFactory.class",   
                 "javax.net.ssl.SSLSocketFactory");   
         props.put("mail.smtp.socketFactory.fallback", "false");   
-        props.setProperty("mail.smtp.quitwait", "false");   
-
-        session = Session.getDefaultInstance(props, this);   
+        session = Session.getInstance(props, this);   
     }   
 
     protected PasswordAuthentication getPasswordAuthentication() {   
@@ -48,20 +48,16 @@ public class GMailSender extends javax.mail.Authenticator {
     }   
 
     public synchronized void sendMail(String subject, String body, String sender, String recipients) throws Exception {   
-        try{
-        MimeMessage message = new MimeMessage(session);   
-        DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));   
-        message.setSender(new InternetAddress(sender));   
-        message.setSubject(subject);   
-        message.setDataHandler(handler);   
-        if (recipients.indexOf(',') > 0)   
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));   
-        else  
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));   
-        Transport.send(message);   
-        }catch(Exception e){
+    	MimeMessage msg = new MimeMessage(session);
+    	msg.setText(body);
+    	msg.setSubject(subject);
+    	msg.setFrom(new InternetAddress(sender));
+    	msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
 
-        }
+    	Transport transport = session.getTransport("smtps");
+    	transport.connect(mailhost, 465, user, password);
+    	transport.sendMessage(msg, msg.getAllRecipients());
+    	transport.close();
     }   
 
     public class ByteArrayDataSource implements DataSource {   
