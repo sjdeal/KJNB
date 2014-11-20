@@ -6,8 +6,9 @@
     <string name="title_section2">Live Stream</string>
     <string name="title_section3">Be a DJ</string>
     <string name="title_section4">About</string>
-    <string name="play_button">Play</string>
-    <string name="pause_button">Pause</string>
+    <string name="play_button"><b>PLAY</b></string>
+    <string name="pause_button"><b>PAUSE</b></string>
+    <string name="submit_request">Submit Request!</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

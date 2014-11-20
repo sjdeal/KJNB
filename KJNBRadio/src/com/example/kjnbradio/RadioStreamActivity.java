@@ -229,8 +229,8 @@ public class RadioStreamActivity extends ActionBarActivity implements
 //		        final String title = in.substring(0, in.length());
 		        runOnUiThread(new Runnable(){
 		        	public void run(){
-		        		TextView mSongTitle = (TextView) findViewById(R.id.song_title);
-				        TextView mSongArtist = (TextView) findViewById(R.id.song_artist);
+		        		//TextView mSongTitle = (TextView) findViewById(R.id.song_title);
+				        //TextView mSongArtist = (TextView) findViewById(R.id.song_artist);
 				        
 				        //mSongArtist.setText("by " + artist);
 						//mSongTitle.setText("text:" + text);
