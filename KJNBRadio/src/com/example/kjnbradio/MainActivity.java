@@ -84,6 +84,11 @@ public class MainActivity extends ActionBarActivity implements
 			break;
 		}
 	}
+	
+	public void listenNow(View view){
+		Intent intent = new Intent(this, RadioStreamActivity.class);
+		startActivity(intent);
+	}
 
 	public void restoreActionBar() {
 		ActionBar actionBar = getSupportActionBar();

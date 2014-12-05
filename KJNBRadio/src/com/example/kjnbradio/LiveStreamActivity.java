@@ -1,3 +1,7 @@
+//////////////////////////////////
+//THIS CLASS IS NOT USED ANYMORE//
+//////////////////////////////////
+
 package com.example.kjnbradio;
 
 import com.example.kjnbradio.MainActivity.PlaceholderFragment;

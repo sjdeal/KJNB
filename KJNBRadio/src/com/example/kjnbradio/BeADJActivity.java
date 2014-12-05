@@ -396,13 +396,18 @@ public class BeADJActivity extends Activity implements
 				showStartString3 += showStartHour + ":" + minute;
 				
 				
+				//TODO: Add OAuth 2.0 authentication to this. It won't work otherwise.
+				
+				
 				SpreadsheetService service = new SpreadsheetService("");
 				
 				URL SPREADSHEET_FEED_URL = new URL(getString(R.string.form_spreadsheet));
 				
-				SpreadsheetFeed feed = service.getFeed(SPREADSHEET_FEED_URL, SpreadsheetFeed.class);
-				List<SpreadsheetEntry> spreadsheets = feed.getEntries();
-				SpreadsheetEntry spreadsheet = spreadsheets.get(0);
+				SpreadsheetEntry spreadsheet = service.getEntry(SPREADSHEET_FEED_URL, SpreadsheetEntry.class);
+				
+				//SpreadsheetFeed feed = service.getFeed(SPREADSHEET_FEED_URL, SpreadsheetFeed.class);
+				//List<SpreadsheetEntry> spreadsheets = feed.getEntries();
+				//SpreadsheetEntry spreadsheet = spreadsheets.get(0);
 				
 				WorksheetFeed worksheetFeed = service.getFeed(spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
 				WorksheetEntry worksheet = worksheetFeed.getEntries().get(0);
@@ -431,7 +436,7 @@ public class BeADJActivity extends Activity implements
 				
 				row = service.insert(listFeedUrl, row);
 			}catch(Exception e){
-				
+				Log.e("ERROR", "Error", e);
 			}
 			return null;
 		}

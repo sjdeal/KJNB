@@ -20,10 +20,31 @@
     <string name="title_activity_be_adj">Be A DJ</string>
     <string name="radio_stream_high_quality">http://kjnb.csbsju.edu:8000/highquality</string>
     <string name="radio_stream_low_quality">http://kjnb.csbsju.edu:8000/lowquality</string>
-    <string name="request_email">seanjdeal@gmail.com</string>
-    <string name="request_password">Chaddy!!</string>
+    <string name="request_email">kjnbrequest@gmail.com</string>
+    <string name="request_password">kjnbcsbsju</string>
     <string name="video_stream">http://o1.stretchinternet.com:1935/ondemand/_definst_/mp4:siena/siena-141300-v.mp4/playlist.m3u8</string>
     <string name="form_spreadsheet">https://docs.google.com/spreadsheets/d/1QYhMzlPj6f8vVE7dvqSvnPxvCd007-kikNJiV-lpdEU</string>
+    <string name="about_1"><b>Contact Us\n</b>
+				KJNB Radio is dedicated to providing nothing but respectable programming to its listeners. If you have questions or comments, please contact us at:\r\n
+				<b>Our Mailing Address:</b>\n
+				KJNB Radio\n
+				P.O. Box 2000\n
+				2850 Abbey Plaza\n
+				Collegeville, MN 56321\n</string>
+	<string name="about_2"><b>Contact Numbers</b>\n
+				<b>General Manager:</b> (320) 363-2501 -- kjnb@csbsju.edu\n
+				<b>Music Director:</b> (320) 247-5562 -- kjnbmusic@csbsju.edu\n
+				<b>Chief Engineer:</b> (320) 200-4735 -- kjnbengineer@csbsju.edu\n
+				<b>Request Line:</b> (320) 363-3379\n</string>
+	<string name="about_3"><b>Our Staff\n</b>
+	    		<b>General Manager:</b> Matthew Fink\n
+				<b>Programming Director and Vice President:</b> Michael Macken\n
+				<b>Technology Director:</b> Peter Valois\n
+				<b>Fundraising Director:</b> Dona Marthaler\n
+				<b>Marketing Director:</b> Peter Best\n
+				<b>Sports and News Director:</b> Zach Brown</string>
+	<string name="phoneNumber"><a href="tel:3204241613">(320) 424-1613</a></string>
+	<string name="listenNow"><b>LISTEN NOW</b></string>
 
     <string-array name="Months">
         <item>Month</item>

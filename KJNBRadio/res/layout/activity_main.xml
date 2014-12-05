@@ -11,19 +11,42 @@
          space available using match_parent in both dimensions.
     -->
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" 
+        android:gravity="center"
+        android:background="#999999" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome to the app!"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    </FrameLayout>
+        
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:scrollY="10dp"
+	        android:src="@drawable/kjnblogoheader" />
+		
+	    <ImageView
+	        android:id="@+id/imageView2"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/imageView1"
+	        android:src="@drawable/kjnblogo" />
+	    
+	    <Button
+            android:id="@+id/link_to_live_stream"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/imageView2"
+            android:onClick="listenNow"
+            android:text="@string/listenNow"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_button" />
+    </RelativeLayout>
 
     <!--
          android:layout_gravity="start" tells DrawerLayout to treat
@@ -37,12 +60,8 @@
          the container.
     -->
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollY="10dp"
-        android:src="@drawable/kjnblogo" />
+
+	
 
     <fragment
         android:id="@+id/navigation_drawer"

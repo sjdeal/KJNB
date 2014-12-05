@@ -48,5 +48,17 @@
             android:label="@string/title_activity_be_adj" >
         </activity>
     </application>
+    
+    <application
+        android:name=".LiveStreamApplication"
+        android:label="LiveStream" >
+        <activity android:name=".LiveStreamApp"
+            	  android:label="LiveStream" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>

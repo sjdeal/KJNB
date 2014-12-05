@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.text.util.Linkify;
 import android.widget.ArrayAdapter;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -54,6 +55,7 @@ public class AboutActivity extends ActionBarActivity implements
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
+		
 		
 	}
 

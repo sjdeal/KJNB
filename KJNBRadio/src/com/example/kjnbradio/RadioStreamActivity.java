@@ -36,8 +36,11 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class RadioStreamActivity extends ActionBarActivity implements
@@ -72,31 +75,69 @@ public class RadioStreamActivity extends ActionBarActivity implements
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 		mNavigationDrawerFragment.selectItem(2);
-				
-		try{
+		
+		Switch qualitySwitch = (Switch) findViewById(R.id.stream_quality_switch);
+
+		if(LiveStreamApplication.getMedia() == null){
 			ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 			NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-			media = new MediaPlayer();
-			//media.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			if(mWifi.isConnected()){
-				media.setDataSource(getString(R.string.radio_stream_high_quality));
+				createMediaPlayer(getString(R.string.radio_stream_high_quality));
+				qualitySwitch.setChecked(true);
 			}else{
-				media.setDataSource(getString(R.string.radio_stream_low_quality));
+				createMediaPlayer(getString(R.string.radio_stream_low_quality));
+				qualitySwitch.setChecked(false);
 			}
+			
+		}else{
+			ProgressBar progressBar = (ProgressBar)findViewById(R.id.loadingWheel);
+			progressBar.setVisibility(View.INVISIBLE);
+			Button button = (Button) findViewById(R.id.radio_play_button);
+			media = LiveStreamApplication.getMedia();
+			if(media.isPlaying()){
+				button.setText(R.string.pause_button);
+			}
+			else{
+				button.setText(R.string.play_button);
+			}
+		}
+		
+		qualitySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		        if (isChecked) {
+		        	media.stop();
+					media.release();
+					createMediaPlayer(getString(R.string.radio_stream_high_quality));
+		        } else {
+		        	media.stop();
+					media.release();
+					createMediaPlayer(getString(R.string.radio_stream_low_quality));
+		        }
+		    }
+		});
+		
+		//Get the song and artist from the internet
+		//new GetSongAndArtistTask().execute();
+        
+		
+	}
+	
+	private void createMediaPlayer(String url){
+		try{
+			final ProgressBar progressBar = (ProgressBar)findViewById(R.id.loadingWheel);
+			progressBar.setVisibility(View.VISIBLE);
+			media = LiveStreamApplication.createMedia();
+			media.setDataSource(url);
 			media.setOnPreparedListener(new OnPreparedListener() {
 				public void onPrepared(MediaPlayer mp){
 					mp.start();
+					progressBar.setVisibility(View.INVISIBLE);
 				}
 			});
 			media.prepareAsync();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		//Get the song and artist from the internet
-		//new GetSongAndArtistTask().execute();
-        
-		
 	}
 
 	@Override
@@ -178,7 +219,12 @@ public class RadioStreamActivity extends ActionBarActivity implements
 	public void sendRequest(View view){
 		new SendRequestTask().execute();
 	}
+	
+	public void switchQuality(View view){
+		
+	}
 
+	//TODO: Make this work around CSBSJU proxy
 	
 	private class SendRequestTask extends AsyncTask{
 

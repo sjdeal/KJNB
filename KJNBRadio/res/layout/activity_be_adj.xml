@@ -14,7 +14,8 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" 
+        android:background="#999999">
 
         <ScrollView
             android:id="@+id/scrollView_1"
@@ -34,7 +35,7 @@
                     android:paddingBottom="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name, banner IDs, cellphone, and email of all DJs"
+                    android:text="Name, Banner ID, Cellphone, and Email of all DJs"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
                 
                 <TextView
@@ -418,7 +419,8 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Submit"
-                    android:onClick="submit" />
+                    android:onClick="submit" 
+                    android:background="@drawable/request_button"/>
                 
             </LinearLayout>
         </ScrollView>

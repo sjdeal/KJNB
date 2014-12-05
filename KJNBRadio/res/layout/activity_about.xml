@@ -14,28 +14,52 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" 
+        android:background="#999999">
         
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView_1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-	        <TextView
-	            android:id="@+id/textView1"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="Contact Us"
-	            android:textAppearance="?android:attr/textAppearanceLarge" />
-	        
-	        <TextView
-	            android:id="@+id/textGeneralManager"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="General Manager:"
-	            android:textAppearance="?android:attr/textAppearanceMedium" />
-	        
-	    </LinearLayout>
+            android:layout_height="match_parent" >
+        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:orientation="vertical" >
+	
+		        <TextView
+		            android:id="@+id/textContactUs"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingTop="10dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:text="@string/about_1"
+		            android:textAppearance="?android:attr/textAppearanceLarge" />
+		        
+		        <TextView
+		            android:id="@+id/textContactNumbers"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingTop="10dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:text="@string/about_2"
+		            android:textAppearance="?android:attr/textAppearanceLarge" />
+		        
+		        <TextView
+		            android:id="@+id/textOurStaff"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingTop="10dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:text="@string/about_3"
+		            android:textAppearance="?android:attr/textAppearanceLarge" />
+		        
+		    </LinearLayout>
+		    
+	    </ScrollView>
 
     </FrameLayout>
 
@@ -59,4 +83,5 @@
         android:layout_gravity="start"
         tools:layout="@layout/fragment_navigation_drawer" />
 
-</android.support.v4.widget.DrawerLayout>
+</android.support.v4.widget.DrawerLayout> 
+
