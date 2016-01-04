@@ -2,12 +2,180 @@
 <resources>
 
     <string name="app_name">KJNB</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Home Page</string>
+    <string name="title_section2">Live Stream</string>
+    <string name="title_section3">Be a DJ</string>
+    <string name="title_section4">About</string>
+    <string name="play_button"><b>PLAY</b></string>
+    <string name="pause_button"><b>PAUSE</b></string>
+    <string name="submit_request">Submit Request!</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_radio_stream">Live Stream</string>
+    <string name="title_activity_schedule">Schedule</string>
+    <string name="title_activity_video_stream">About</string>
+    <string name="title_activity_be_adj">Be A DJ</string>
+    <string name="radio_stream_high_quality">http://kjnb.csbsju.edu:8000/highquality</string>
+    <string name="radio_stream_low_quality">http://kjnb.csbsju.edu:8000/lowquality</string>
+    <string name="request_email">kjnbrequest@gmail.com</string>
+    <string name="request_password">kjnbcsbsju</string>
+    <string name="video_stream">http://o1.stretchinternet.com:1935/ondemand/_definst_/mp4:siena/siena-141300-v.mp4/playlist.m3u8</string>
+    <string name="form_spreadsheet">https://docs.google.com/spreadsheets/d/1QYhMzlPj6f8vVE7dvqSvnPxvCd007-kikNJiV-lpdEU</string>
+    <string name="about_1"><b>Contact Us\n</b>
+				KJNB Radio is dedicated to providing nothing but respectable programming to its listeners. If you have questions or comments, please contact us at:\r\n
+				<b>Our Mailing Address:</b>\n
+				KJNB Radio\n
+				P.O. Box 2000\n
+				2850 Abbey Plaza\n
+				Collegeville, MN 56321\n</string>
+	<string name="about_2"><b>Contact Numbers</b>\n
+				<b>General Manager:</b> (320) 363-2501 -- kjnb@csbsju.edu\n
+				<b>Music Director:</b> (320) 247-5562 -- kjnbmusic@csbsju.edu\n
+				<b>Chief Engineer:</b> (320) 200-4735 -- kjnbengineer@csbsju.edu\n
+				<b>Request Line:</b> (320) 363-3379\n</string>
+	<string name="about_3"><b>Our Staff\n</b>
+	    		<b>General Manager:</b> Matthew Fink\n
+				<b>Programming Director and Vice President:</b> Michael Macken\n
+				<b>Technology Director:</b> Peter Valois\n
+				<b>Fundraising Director:</b> Dona Marthaler\n
+				<b>Marketing Director:</b> Peter Best\n
+				<b>Sports and News Director:</b> Zach Brown</string>
+	<string name="phoneNumber"><a href="tel:3204241613">(320) 424-1613</a></string>
+	<string name="listenNow"><b>LISTEN NOW</b></string>
+
+    <string-array name="Months">
+        <item>Month</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="Days">
+        <item>Day</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string-array name="Hours">
+        <item>Hr</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="Minutes">
+        <item>Min</item>
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+    <string-array name="AMPM">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
 
 </resources>
